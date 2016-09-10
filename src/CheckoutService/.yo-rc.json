@@ -1,0 +1,6 @@
+{
+  "generator-spring": {
+    "packageName": "com.CheckoutService",
+    "packageFolder": "com/CheckoutService"
+  }
+}

@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        maven { url 'http://repo.springsource.org/libs-snapshot' }
+        mavenLocal()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:0.5.0.M5')
+    }
+}
+
+
+apply plugin: 'groovy'
+
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'CheckoutService'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'http://repo.springsource.org/libs-snapshot' }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web:0.5.0.M5')
+    compile 'org.thymeleaf:thymeleaf-spring3:2.0.17'
+    
+    
+    
+    
+    
+    
+    compile 'org.springframework.boot:spring-boot-starter-logging:0.5.0.M5'
+    
+    
+    testCompile 'org.codehaus.groovy:groovy-all:2.1.7'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
+
+task run(type:Exec){
+    commandLine "java -jar build/libs/CheckoutService-0.1.0.jar".split(' ')
+}
+
+run.dependsOn build
+
+
+task (type: Wrapper) {
+    gradleVersion = '1.8'
+}
